@@ -28,8 +28,11 @@ Sit down and work out with your pair what pages you're going to be building. At 
 2. A page that lists all the postings in a given category
 3. A page that lets someone create a new posting in a given category
 4. A page that lets someone who has created a page return to edit/update the page
+
 If you're never used Craigslist, it doesn't have any kind of user authentication. Instead, when someone creates a post they're given a special "secret" URL that grants them powers to edit that post that looks like
-```http://craigslist.com/post/123/edit?key=kjansd812```
+```
+http://craigslist.com/post/123/edit?key=kjansd812
+```
 The key is randomly generated. The person is given their "edit URL" after they successfully create a post. Anyone with this URL can edit the post.
 
 Think about this like a real web application you might want someone to use. What fields should a `Post` have?
@@ -43,9 +46,11 @@ Spend time enumerating the pages, deciding what should be displayed on each one.
 Our controller structure will be more complicated. We'll want URLs that look like `/categories/123` and `/posts/456`. We'll be using both `get` and `post` methods.
 
 To create a new `Post`, for example, we'd want to submit an HTML form using the POST http method to the /posts URL, like so:
-```<form action="/posts" method="post">
+```HTML    
+<form action="/posts" method="post">
   <!-- other form elements here -->
-</form>```
+</form>
+```
 and to update an existing record (say with id 1234) we'd want to `post` to `/posts/1234`.
 
 Controllers should either redirect to another URL or render a page. Typically, a page loaded via HTTP POST will redirect to an appropriate URL if a request succeeds and render an error page, otherwise.
@@ -57,6 +62,7 @@ Make sure the core features work. We should be able to download your app, run it
 3. View a particular posting
 4. Create my own posting
 5. Edit my postings by using the "secret key" that I get after creating my posting
+
 <h3>Add One Final Feature</h3>
 One last feature to add: the "this is awesome" feature. What does awesome mean? It can mean anything. The code is awesome, there are new awesome features, the design is awesome.
 
